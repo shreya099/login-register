@@ -32,7 +32,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             // Authentication passed...
-            return redirect()->intended('dashboard');
+            return redirect()->intended('admin/dashboard');
         }
         return Redirect::to("/")->withSuccess('Opps! You have entered invalid credentials');
     }
@@ -56,7 +56,7 @@ class AuthController extends Controller
     {
  
       if(Auth::check()){
-        return view('dashboard');
+        return view('admin/dashboard');
       }
        return Redirect::to("/")->withSuccess('Opps! You do not have access');
     }
