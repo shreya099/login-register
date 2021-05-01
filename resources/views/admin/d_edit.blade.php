@@ -17,6 +17,7 @@
       </div>
       <div class="modal-body">
         <form action="{{url('delivery/update')}}" method="POST" id="logForm" enctype="multipart/form-data">
+          
 @csrf <input type="HIDDEN" name="id" value="{{$d->id}}">
 
 

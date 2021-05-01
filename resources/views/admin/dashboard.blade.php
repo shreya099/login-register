@@ -120,6 +120,17 @@
             </a>
             
           </li>
+           <li class="nav-item">
+            <a href="{{url('admin/dish')}}" class="nav-link">
+              <i class="nav-icon fas fa-utensils"></i>
+              <p>
+                 Dish
+
+               
+              </p>
+            </a>
+            
+          </li>
           
             
            

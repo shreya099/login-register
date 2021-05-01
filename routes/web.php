@@ -46,6 +46,11 @@ Auth::routes();
    Route::get('coupon/delete/{id}', 'CouponController@delete');
     Route::get('coupon/edit/{id}', 'CouponController@edit');
    Route::post('coupon/update', 'CouponController@update');
+    Route::get('admin/dish', 'DishController@index');
+    Route::post('insertdata', 'DishController@insertdata');
+   Route::get('dish/delete/{id}', 'DishController@delete');
+   Route::get('dish/edit/{id}', 'DishController@edit');
+   Route::post('dish/update', 'DishController@update');
    
 
 

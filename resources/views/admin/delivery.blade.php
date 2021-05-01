@@ -9,7 +9,7 @@
 </head>
              
  @if(session('message'))
- <script>swal( '{{session('success')}}' ,'inserted!','success' ).then(function() { window. location = '{{url("admin/category")}}'; });;</script>
+ <script>swal( '{{session('success')}}' ,'inserted!','success' ).then(function() { window. location = '{{url("admin/delivery")}}'; });;</script>
  @endif 
  
         <div class="col-sm-6">

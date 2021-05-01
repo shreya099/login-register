@@ -1,6 +1,6 @@
  @extends('admin.dashboard')
 
- @section('content')<div class="col-sm-6"><h1>Coupon Table</h1> </div><br>
+ @section('content')<div class="col-sm-6"><h1>Dish Table</h1> </div><br>
 <head><!-- DataTables -->
   <link rel="stylesheet" href="{{url('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{url('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
@@ -9,7 +9,7 @@
 </head>
        
   @if(session('message'))
- <script>swal( '{{session('success')}}' ,'inserted!','success' ).then(function() { window. location = '{{url("admin/coupon")}}'; });;</script>
+ <script>swal( '{{session('success')}}' ,'inserted!','success' ).then(function() { window. location = '{{url("admin/dish")}}'; });;</script>
  @endif
         <div class="col-sm-6">
             
@@ -29,46 +29,57 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="{{url('insert-data')}}" method="POST" id="logForm" enctype="multipart/form-data">
+        <form action="{{url('insertdata')}}" method="POST" id="logForm" enctype="multipart/form-data">
 {{ csrf_field() }}
-
-
+    
 <div class="form-label-group">
-  <label for="inputEmail">Coupon-code</label>
+  <label for="inputEmail">dish_name</label>
  
-<input type="text" name="code" id="inputEmail" class="form-control" placeholder="Enter Coupon code" >
+<input type="text" name="dname" id="inputEmail" class="form-control" placeholder="Enter name" >
 
     
 </div> 
 <div class="form-label-group">
-  <label for="inputPassword">Coupon-type</label>
-<select class="form-control" name="t">
-  <option value="Fixed">Fixed</option>
-  <option value="Percentage">Percentage</option>
-</select>
+  <label for="inputEmail">dish_des</label>
+ 
+<input type="text" name="ddes" id="inputEmail" class="form-control" placeholder="Enter des" >
+
+    
+</div>
+<div class="form-label-group">
+  <label for="inputEmail">dish_img</label>
+ 
+<input type="file" name="dimg" id="inputEmail" class="form-control" placeholder="Enter des" >
+
+    
+</div> 
+<div class="form-label-group">
+  <label for="inputPassword">dish_quantity</label>
+<input type="number" name="dq" class="form-control"placeholder="Enter Coupon value">
+
 
  
 </div>
 <div class="form-label-group">
-  <label for="inputPassword">Coupon-value</label>
-<input type="number" name="value" class="form-control"placeholder="Enter Coupon value">
+  <label for="inputPassword">dish_price</label>
+<input type="number" name="dp" class="form-control"placeholder="Enter Coupon value">
 
  
 </div>
 <div class="form-label-group">
-  <label for="inputPassword">Cart-min-value</label>
-<input type="number" name="minvalue" class="form-control"placeholder="Enter Cart min value">
-
+  <label for="inputPassword">categorie_id</label>
+<select name="categorie_id" class="form-control" >
+  <option>select</option>
+  @foreach($d as $v)
+ <option value="{{$v->id}}" >{{$v->title}}</option>
+ @endforeach
  
+ </select>
+                             
 </div>
-<div class="form-label-group">
-  <label for="inputPassword">Expired Date</label>
-<input type="date" name="edate" class="form-control">
 
- 
-</div>
 <div class="form-label-group">
-  <label for="inputPassword">Coupon-Status</label>
+  <label for="inputPassword">dish_status</label>
 <br><input type="radio" name="i" value="active"> Active<br>
 <input type="radio" name="i" value="inactive"> Inactive
 
@@ -99,44 +110,45 @@
                   <thead>
                   <tr>
                     <th width="5%">S.no</th>
-                    <th>Coupon-code</th>
-                    <th>type</th>
-                    <th>value</th>
-                    <th>Cart-min-value</th>
+                    <th>name</th>
+                   
+                    <th>img</th>
+                    <th>quantity</th>
+                    <th>price</th>
+                    <th>category</th>
                     <th>status</th>
-                    <th>Expired date</th>
+                   
+                   
                  
-                    <th width="20%">Action</th> 
+                    <th>Action</th> 
                   </tr>
                   </thead>
-                       @foreach ($d as $x)
+                 
+                    @for($x=0,$v=0;$x<$q1 && $v<$d1;$x++,$v++)
+
                   <tr>
- <td>{{$x->id}}</td>
-          <td>{{$x->coupon_code}}</td>
-          <td>{{$x->coupon_type}}</td>
-            <td>{{$x->coupon_value}}</td>
-             <td>{{$x->cart_min_value}}</td>
-               <td>{{$x->coupon_status}}</td>
-                <td>{{$x->expired_on}}</td>
-           
-            
-
-
-
-
-
-
-
+ <td>{{$q[$x]->id}}</td>
+          <td>{{$q[$x]->dish_name}}</td>
+          <td> <img src="/upload/{{$q[$x]->dish_img}}" style="width: 100px;height: 100px;"></td>
+            <td>{{$q[$x]->dish_quantity}}</td>
+            <td>{{$q[$x]->dish_price}}</td>
+          
+               <td>{{$d[$x]->title}}</td>
+                 <td>{{$q[$x]->dish_status}}</td>
+       
+               
           <td>
           
-               <a href="{{url('coupon/edit/'.$x->id)}}"><button class="btn btn-primary text-white">edit</button></a>
-            <a href="{{url('coupon/delete/'.$x->id)}}"><button class="btn btn-primary text-white">delete</button></a>
+               <a href="{{url('dish/edit/'.$q[$x]->id)}}"><button class="btn btn-primary text-white">edit</button></a>
+            <a href="{{url('dish/delete/'.$q[$x]->id)}}"><button class="btn btn-primary text-white">delete</button></a>
         </td>
       
 
+      
+
                   </tr>
-                    @endforeach
-                 
+                    @endfor
+         
                  
                 </table> 
        
