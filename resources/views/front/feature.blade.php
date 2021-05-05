@@ -9,9 +9,17 @@
 							<img src="images/bdr-img.png" alt="image description" class="img-responsive">
 						</div>
 					</header>
-				</div>
+				</div><?php  
+					$i=1;
+					 ?>
 				<div class="row">
+					
 					@foreach($d2 as $x)
+					<?php
+					if($i==4)
+						break;
+					 $i++;
+					?>
 						<div class="col-xs-12 col-sm-4">
 							<!-- team sec of the page -->
 							<div class="team-col">
@@ -29,4 +37,5 @@
 						@endforeach
 						
 					</div>
+					<center><a href="{{url('show_all/')}}"><button class="btn btn-success text-center  wow fadeInUp">Show all</button></a></center>
 			</div>

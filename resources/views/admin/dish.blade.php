@@ -124,30 +124,30 @@
                   </tr>
                   </thead>
                  
-                    @for($x=0,$v=0;$x<$q1 && $v<$d1;$x++,$v++)
+                    @foreach($q as $x)
 
                   <tr>
- <td>{{$q[$x]->id}}</td>
-          <td>{{$q[$x]->dish_name}}</td>
-          <td> <img src="/upload/{{$q[$x]->dish_img}}" style="width: 100px;height: 100px;"></td>
-            <td>{{$q[$x]->dish_quantity}}</td>
-            <td>{{$q[$x]->dish_price}}</td>
+ <td>{{$x->id}}</td>
+          <td>{{$x->dish_name}}</td>
+          <td> <img src="/upload/{{$x->dish_img}}" style="width: 100px;height: 100px;"></td>
+            <td>{{$x->dish_quantity}}</td>
+            <td>{{$x->dish_price}}</td>
           
-               <td>{{$q[$x]->categorie_id}}</td>
-                 <td>{{$q[$x]->dish_status}}</td>
+               <td>{{$x->categorie_id}}</td>
+                 <td>{{$x->dish_status}}</td>
        
                
           <td>
           
-               <a href="{{url('dish/edit/'.$q[$x]->id)}}"><button class="btn btn-primary text-white">edit</button></a>
-            <a href="{{url('dish/delete/'.$q[$x]->id)}}"><button class="btn btn-primary text-white">delete</button></a>
+               <a href="{{url('dish/edit/'.$x->id)}}"><button class="btn btn-primary text-white">edit</button></a>
+            <a href="{{url('dish/delete/'.$x->id)}}"><button class="btn btn-primary text-white">delete</button></a>
         </td>
       
 
       
 
                   </tr>
-                    @endfor
+                    @endforeach
          
                  
                 </table> 

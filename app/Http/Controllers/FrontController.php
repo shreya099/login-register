@@ -33,10 +33,15 @@ class FrontController extends Controller
     	return view('front.shop',compact('d1'));
     }
     
+    }
+    public function showall()
+    {
+    	// $d=banner::all();
+    	// $d1=about::all();
+     $d2=category::all();
+    	
     
-
-            
-    
-
+    	
+    	return view('front.show_all',compact('d2'));
     }
 }

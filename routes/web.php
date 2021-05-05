@@ -66,6 +66,7 @@ Auth::routes();
 
    Route::get('front', 'FrontController@index');
    Route::get('dish/{id}', 'FrontController@showdish');
+    Route::get('show_all', 'FrontController@showall');
    
 
 
