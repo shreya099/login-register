@@ -131,6 +131,28 @@
             </a>
             
           </li>
+           <li class="nav-item">
+            <a href="{{url('admin/banner')}}" class="nav-link">
+              <i class="nav-icon fas fa-utensils"></i>
+              <p>
+                 Banner
+
+               
+              </p>
+            </a>
+            
+          </li>
+          <li class="nav-item">
+            <a href="{{url('admin/about')}}" class="nav-link">
+              <i class="nav-icon fas fa-utensils"></i>
+              <p>
+                 About
+
+               
+              </p>
+            </a>
+            
+          </li>
           
             
            

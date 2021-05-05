@@ -51,6 +51,21 @@ Auth::routes();
    Route::get('dish/delete/{id}', 'DishController@delete');
    Route::get('dish/edit/{id}', 'DishController@edit');
    Route::post('dish/update', 'DishController@update');
+      Route::get('admin/banner', 'BannerController@index');
+       Route::post('bannerdata', 'BannerController@submitdata');
+   Route::get('banner/delete/{id}', 'BannerController@delete');
+   Route::get('banner/edit/{id}', 'BannerController@edit');
+   Route::post('banner/update', 'BannerController@update');
+         Route::get('admin/about', 'AboutController@index');
+          Route::post('aboutdata', 'AboutController@submitdata');
+   Route::get('about/delete/{id}', 'AboutController@delete');
+   Route::get('about/edit/{id}', 'AboutController@edit');
+   Route::post('about/update', 'AboutController@update');
+
+
+
+   Route::get('front', 'FrontController@index');
+   Route::get('dish/{id}', 'FrontController@showdish');
    
 
 
