@@ -50,7 +50,13 @@ Auth::routes();
     Route::post('insertdata', 'DishController@insertdata');
    Route::get('dish/delete/{id}', 'DishController@delete');
    Route::get('dish/edit/{id}', 'DishController@edit');
-   Route::post('dish/update', 'DishController@update');
+    Route::post('dish/update', 'DishController@update');
+   Route::get('dish/add_img/{id}', 'DishController@addimg');
+    Route::post('imgdata', 'DishController@imgdata');
+   Route::get('add_img/del/{id}', 'DishController@del');
+   Route::get('add_img/edit1/{id}', 'DishController@edit1');
+    Route::get('show_all', 'FrontController@showall');
+     Route::post('imgupdatedata', 'DishController@update1');
       Route::get('admin/banner', 'BannerController@index');
        Route::post('bannerdata', 'BannerController@submitdata');
    Route::get('banner/delete/{id}', 'BannerController@delete');
@@ -64,9 +70,12 @@ Auth::routes();
 
 
 
+  
    Route::get('front', 'FrontController@index');
    Route::get('dish/{id}', 'FrontController@showdish');
     Route::get('show_all', 'FrontController@showall');
+     Route::get('detail/{id}', 'FrontController@showdetail');
+
    
 
 

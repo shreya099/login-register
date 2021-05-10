@@ -232,7 +232,7 @@
 							<!-- feature col of the page -->
 							<div class="feature-col">
 								<div class="img-holder text-center">
-									<a href="shop-detail.html"><img src="/upload/{{$x->dish_img}}" alt="image description" class="img-responsive"></a>
+									<a href="{{url('detail/'.$x->id)}}"><img src="/upload/{{$x->dish_img}}" alt="image description" class="img-responsive"></a>
 								</div>
 								<div class="txt-wrap">
 									<h2 class="heading3"><a href="shop-detail.html">
@@ -349,92 +349,7 @@
 								<img src="https://via.placeholder.com/270x360" alt="image-description" class="img-responsive">
 							</div>
 						</section>
-						<!-- widget of the page -->
-						<section class="widget">
-							<h2 class="heading2 text-uppercase">FEATURED</h2>
-							<ul class="list-unstyled feature-list">
-								<li>
-									<div class="img-holder text-center pull-left">
-										<a href="shop-detail.html"><img src="https://via.placeholder.com/20x70" class="img-responsive" alt="img-description"></a>
-									</div>
-									<div class="txt-holder pull-left">
-										<h3 class="heading3"><a href="shop-detail.html">Rose Wines</a></h3>
-										<ul class="list-unstyled rating-list">
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-										</ul>
-										<strong class="heading2 fontcinzel fwBold">$125.00</strong>
-									</div>
-								</li>
-								<li>
-									<div class="img-holder text-center pull-left">
-										<a href="shop-detail.html"><img src="https://via.placeholder.com/20x70" class="img-responsive" alt="img-description"></a>
-									</div>
-									<div class="txt-holder pull-left">
-										<h3 class="heading3"><a href="shop-detail.html">Rose Wines</a></h3>
-										<ul class="list-unstyled rating-list">
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-										</ul>
-										<strong class="heading2 fontcinzel fwBold">$125.00</strong>
-									</div>
-								</li>
-								<li>
-									<div class="img-holder text-center pull-left">
-										<a href="shop-detail.html"><img src="https://via.placeholder.com/20x70" class="img-responsive" alt="img-description"></a>
-									</div>
-									<div class="txt-holder pull-left">
-										<h3 class="heading3"><a href="shop-detail.html">Rose Wines</a></h3>
-										<ul class="list-unstyled rating-list">
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-										</ul>
-										<strong class="heading2 fontcinzel fwBold">$125.00</strong>
-									</div>
-								</li>
-								<li>
-									<div class="img-holder text-center pull-left">
-										<a href="shop-detail.html"><img src="https://via.placeholder.com/20x70" class="img-responsive" alt="img-description"></a>
-									</div>
-									<div class="txt-holder pull-left">
-										<h3 class="heading3"><a href="shop-detail.html">Rose Wines</a></h3>
-										<ul class="list-unstyled rating-list">
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-										</ul>
-										<strong class="heading2 fontcinzel fwBold">$125.00</strong>
-									</div>
-								</li>
-								<li>
-									<div class="img-holder text-center pull-left">
-										<a href="shop-detail.html"><img src="https://via.placeholder.com/20x70" class="img-responsive" alt="img-description"></a>
-									</div>
-									<div class="txt-holder pull-left">
-										<h3 class="heading3"><a href="shop-detail.html">Rose Wines</a></h3>
-										<ul class="list-unstyled rating-list">
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-											<li><a href="javascript:void(0);" class="fa fa-star"></a></li>
-										</ul>
-										<strong class="heading2 fontcinzel fwBold">$125.00</strong>
-									</div>
-								</li>
-							</ul>
-						</section>
+						
 					</aside>
 				</div>
 			</div>

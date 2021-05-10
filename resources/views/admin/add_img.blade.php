@@ -13,7 +13,7 @@
  @endif
         <div class="col-sm-6">
             
-             <button class="btn btn-success"  data-toggle="modal" data-target="#exampleModal">Add coupon</button>
+             <button class="btn btn-success"  data-toggle="modal" data-target="#exampleModal">Add image</button>
           </div><br>
       </div><!-- /.container-fluid -->
       <!-- Button trigger modal -->
@@ -29,54 +29,29 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="{{url('insertdata')}}" method="POST" id="logForm" enctype="multipart/form-data">
+        <form action="{{url('imgdata')}}" method="POST" id="logForm" enctype="multipart/form-data">
 {{ csrf_field() }}
-    
-<div class="form-label-group">
-  <label for="inputEmail">dish_name</label>
- 
-<input type="text" name="dname" id="inputEmail" class="form-control" placeholder="Enter name" >
 
-    
-</div> 
-<div class="form-label-group">
-  <label for="inputEmail">dish_des</label>
- 
-<input type="text" name="ddes" id="inputEmail" class="form-control" placeholder="Enter des" >
 
-    
-</div>
 <div class="form-label-group">
   <label for="inputEmail">dish_img</label>
  
-<input type="file" name="dimg" id="inputEmail" class="form-control" placeholder="Enter des" >
+<input type="file" name="img" id="inputEmail" class="form-control" placeholder="Enter des" >
 
     
 </div> 
-<div class="form-label-group">
-  <label for="inputPassword">dish_quantity</label>
-<input type="number" name="dq" class="form-control"placeholder="Enter Coupon value">
 
 
- 
-</div>
 <div class="form-label-group">
-  <label for="inputPassword">dish_price</label>
-<input type="number" name="dp" class="form-control"placeholder="Enter Coupon value">
+  <label for="inputPassword">DISH_id</label>
+<select name="dish_id" class="form-control" >
+  
+ <option value="{{$d->id}}" >{{$d->dish_name}}</option>
 
- 
-</div>
-<div class="form-label-group">
-  <label for="inputPassword">categorie_id</label>
-<select name="categorie_id" class="form-control" >
-  <option>select</option>
-  @foreach($d as $v)
- <option value="{{$v->id}}" >{{$v->title}}</option>
- @endforeach
- 
  </select>
                              
 </div>
+
 
 <div class="form-label-group">
   <label for="inputPassword">dish_status</label>
@@ -110,12 +85,10 @@
                   <thead>
                   <tr>
                     <th width="5%">S.no</th>
-                    <th>name</th>
+                   
                    
                     <th>img</th>
-                    <th>quantity</th>
-                    <th>price</th>
-                    <th>category</th>
+                   
                     <th>status</th>
                    
                    
@@ -123,25 +96,21 @@
                     <th>Action</th> 
                   </tr>
                   </thead>
-                 
-                    @foreach($q as $x)
+                 @foreach($d1 as $x)
 
                   <tr>
  <td>{{$x->id}}</td>
-          <td>{{$x->dish_name}}</td>
-          <td> <img src="/upload/{{$x->dish_img}}" style="width: 100px;height: 100px;"></td>
-            <td>{{$x->dish_quantity}}</td>
-            <td>{{$x->dish_price}}</td>
-          
-               <td>{{$x->categorie_id}}</td>
-                 <td>{{$x->dish_status}}</td>
+         
+          <td> <img src="/upload/{{$x->img}}" style="width: 100px;height: 100px;"></td>
+           
+                 <td>{{$x->status}}</td>
        
                
           <td>
           
-               <a href="{{url('dish/edit/'.$x->id)}}"><button class="btn btn-primary text-white">edit</button></a>
-            <a href="{{url('dish/delete/'.$x->id)}}"><button class="btn btn-primary text-white">delete</button></a>
-            <a href="{{url('dish/add_img/'.$x->id)}}"><button class="btn btn-primary text-white">Add img</button></a>
+               <a href="{{url('add_img/edit1/'.$x->id)}}"><button class="btn btn-primary text-white">edit</button></a>
+            <a href="{{url('add_img/del/'.$x->id)}}"><button class="btn btn-primary text-white">delete</button></a>
+          
         </td>
       
 

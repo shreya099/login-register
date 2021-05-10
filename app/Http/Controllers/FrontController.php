@@ -44,4 +44,14 @@ class FrontController extends Controller
     	
     	return view('front.show_all',compact('d2'));
     }
+    public function showdetail($id)
+    {
+        $d=dish::find($id);
+        $d1=DB::table('add_imgs')->where('dish_id', '=', $d->id)->get();
+         if($d1){
+        return view('front.detail',compact('d1','d'));
+    }
+
+        
+    }
 }
