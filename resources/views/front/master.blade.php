@@ -215,7 +215,14 @@
 											<li><a href="blog-detail-fullwidth.html">Blog Detail Fullwidth</a></li>
 										</ul>
 									</li>
-									<li><a href="contactus.html">Contact</a></li>
+									<!--  -->
+									@if (!Auth::guest())
+                                    <li class="">{{Auth()->user()->name}}</li>
+									<li class=""><a href="{{url('logout1')}}">logout</a></li>
+                                    @else
+                                       <li class=""><a href="{{url('user_login')}}">login</a></li>
+                                    @endif
+									
 								</ul>
 							</nav>
 						</div>
@@ -330,5 +337,17 @@
 		<script src="{{url('js/plugins.js')}}"></script>
 		<!-- include jQuery -->
 		<script src="{{url('js/jquery.main.js')}}"></script>
+		<script>
+			function SelectPaymentMethod() {
+				// body...
+				 if($('.stripe').is(':checked') || $('.cod').is(':checked') || $('.paytm').is(':checked') || $('.Instamojo').is(':checked') || $('.Razorpay').is(':checked') ){
+                        alert('checked');
+                                }
+                  else{
+                      alert('Please select payment method');
+                       return false;
+                      }
+			}
+		</script>
 	</body>
 </html>

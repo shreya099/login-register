@@ -70,11 +70,26 @@ Auth::routes();
 
 
 
+
   
    Route::get('front', 'FrontController@index');
    Route::get('dish/{id}', 'FrontController@showdish');
     Route::get('show_all', 'FrontController@showall');
      Route::get('detail/{id}', 'FrontController@showdetail');
+      Route::get('cart', 'FrontController@cart');
+      Route::post('add_to','FrontController@addtocart');
+      Route::get('register1','FrontController@register');
+        Route::get('user_r','UserController@user');
+        Route::post('savereg','UserController@userinsert');
+         Route::get('user_login','UserController@userlogin');
+         Route::post('user-login','UserController@logininsert');
+           Route::get('logout1','UserController@logout1');
+            Route::get('checkout','FrontController@checkout');
+             Route::get('cart/update_q/{id}/{dish_quantity}','FrontController@update_q');
+              Route::post('placeorder','FrontController@placeorder');
+              Route::get('thanks','FrontController@thanks');
+
+
 
    
 

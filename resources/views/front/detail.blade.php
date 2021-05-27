@@ -244,6 +244,12 @@
 						</ul>
 						<strong class="price fontbase">{{$d->dish_price}}</strong>
 						<p>{{$d->dish_des}}</p>
+						<form method="post" action="{{url('add_to')}}">
+							@csrf
+							<input type="text" name="dish_id" value="{{$d->id}}">
+							<input type="text" name="dish_name" value="{{$d->dish_name}}">
+							<input type="text" name="dish_img" value="{{$d->dish_img}}">
+							<input type="text" name="dish_price" value="{{$d->dish_price}}">
 						<!-- footer of the page -->
 						<footer class="footer">
 							<div class="f-holder">
@@ -284,14 +290,16 @@
 						</footer>
 						<!-- holder of the page -->
 						<div class="holder">
-							<input type="number" placeholder="1">
+							<input type="number" name="dish_quantity">
 							<ul class="list-unstyled text-center social-networks">
 								<li><a href="javascript:void(0);"><i class="fa fa-arrows-alt" aria-hidden="true"></i></a></li>
 								<li><a href="javascript:void(0);"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
 								<li><a href="javascript:void(0);"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
 								<li><a href="javascript:void(0);"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+								<li><button class="btn btn-primary" type="submit">add to cart</button></li>
 							</ul>
 						</div>
+					    </form>
 						<!-- accordion of the page -->
 						<ul class="accordion list-unstyled">
 							<li class="active">
