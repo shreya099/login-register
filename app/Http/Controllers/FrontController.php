@@ -176,7 +176,8 @@ class FrontController extends Controller
              # code...
             $d1=new Dishitem;
             $d1->order_id=$order_id;
-            $d1->user_id=0;
+            $d1->user_id=$d->user_id;
+             $d1->user_email=$dish_i->user_email;
             $d1->dish_name=$dish_i->dish_name;
             $d1->dish_img=$dish_i->dish_img;
             $d1->dish_quantity=$dish_i->dish_quantity;
@@ -198,5 +199,15 @@ class FrontController extends Controller
             $d=Dishorder::where('user_email',$useremail)->get();
             return view('front.thanks',compact('d'));
            }  
+           public function my()
+           {
+            return view('front.my');
+           }
+             public function yourorder()
+           { $useremail=Auth::user()->email;
+             $d1=Dishitem::where('user_email',$useremail)->get();
+            return view('front.yourorder',compact('d1'));
+           }
+
 
 }

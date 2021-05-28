@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator,Redirect,Response;
 Use App\User;
+use App\category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Session;
+use DB;
  
 class AuthController extends Controller
 {
@@ -56,7 +58,10 @@ class AuthController extends Controller
     {
  
       if(Auth::check()){
-        return view('admin/dashboard');
+        $d=DB::table('categories')->count();
+        $d1=DB::table('dishes')->count();
+        $d2=DB::table('users')->count();
+        return view('admin/dashboard1',compact('d','d1','d2'));
       }
        return Redirect::to("/")->withSuccess('Opps! You do not have access');
     }

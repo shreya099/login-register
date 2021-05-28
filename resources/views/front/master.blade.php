@@ -51,7 +51,7 @@
 									<!-- setting-drop of the page -->
 									<div class="setting-drop">
 										<ul class="list-unstyled account-list">
-											<li><a href="javascript:void(0);">My Account</a></li>
+											<li><a href="{{url('my')}}">My Account</a></li>
 											<li><a href="wishlist.html">My Wishlist</a></li>
 											<li><a href="compare.html">Compare</a></li>
 											<li><a href="shopping-cart.html">My Cart</a></li>
