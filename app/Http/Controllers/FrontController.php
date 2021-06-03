@@ -218,13 +218,15 @@ class FrontController extends Controller
             return view('front.thanks',compact('d'));
            }  
            public function my()
-           {
-            return view('front.my');
+         {    $useremail=Auth::user()->email;
+            $d1=Dishorder::where('user_email',$useremail)->get();
+            return view('front.my',compact('d1'));
            }
-             public function yourorder()
+             public function yourorder($id)
            { $useremail=Auth::user()->email;
              $d1=Dishitem::where('user_email',$useremail)->get();
-            return view('front.yourorder',compact('d1'));
+             $d2=Dishorder::where('user_email',$useremail)->where('user_id',$id)->get();
+            return view('front.yourorder',compact('d1','d2'));
            }
 
 

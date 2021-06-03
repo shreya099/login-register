@@ -68,7 +68,8 @@ Auth::routes();
    Route::get('about/edit/{id}', 'AboutController@edit');
    Route::post('about/update', 'AboutController@update');
      Route::get('admin/allorder', 'OrderController@index');
-
+     Route::get('submit-order','OrderController@submit');
+      Route::get('submit-pay','OrderController@submit1');
 
 
 
@@ -90,7 +91,7 @@ Auth::routes();
               Route::post('placeorder','FrontController@placeorder');
               Route::get('thanks','FrontController@thanks');
                  Route::get('my','FrontController@my');
-                   Route::get('yourorder','FrontController@yourorder');
+                   Route::get('yourorder/{id}','FrontController@yourorder');
 
 
 

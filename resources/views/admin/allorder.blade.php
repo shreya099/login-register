@@ -109,8 +109,36 @@
 
              </td>
              <td>{{$x->created_at}}</td>
-             <td>{{$x->order_status}}</td>
-             <td>{{$x->status}}</td>
+             <td>
+<form id="myForm" action="{{url('submit-order')}}">
+  <input type="hidden" name="user_id" value="{{$x->user_id}}">
+              <input type="hidden" name="user_email" value="{{$x->user_email}}">
+              <input type="hidden" name="id" value="{{$x->id}}">
+            <select onchange="this.form.submit()" name="orders">
+<option  value="">{{$x->order_status}}</option>
+              <option  value="Pending">Pending</option>
+              <option  value="Done">Done</option>
+              <option  value="Failed">Failed</option>
+            </select>
+          </form>
+           
+           
+             </td>
+             <td>
+              <form id="myForm1" action="{{url('submit-pay')}}">
+                <input type="hidden" name="user_id" value="{{$x->user_id}}">
+              <input type="hidden" name="user_email" value="{{$x->user_email}}">
+              <input type="hidden" name="id" value="{{$x->id}}">
+              <select onchange="this.form.submit()" name="pay">
+                <option  value="">{{$x->payment_status}}</option>
+              <option  value="Pending">Pending</option>
+              <option  value="IN-making">IN-making</option>
+              <option  value="Delivered">Delivered</option>
+              <option  value="Failed">Failed</option>
+            </select>
+              </form>
+           
+          </td>
              <td>{{$x->payment_method}}</td>
            
             
@@ -213,5 +241,12 @@
     });
   });
 </script>
+<script>
+  document.getElementById("myForm").submit();
+</script>
+<script>
+  document.getElementById("myForm1").submit();
+</script>
+
 
 

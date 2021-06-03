@@ -39,9 +39,11 @@
 										</td>
 										<td class="price fwBold">{{$x->dish_price}}</td>
 										<td>	
-											
- 
- <input type="tet" name="" value="{{$x->dish_quantity}}">
+											@foreach($d2 as $y)
+ @if($y->id==$x->order_id)
+ <input type="tet" name="" value="{{$y->order_status}}">
+ @endif
+ @endforeach
 
 										</td>
 										<td class="wrap">

@@ -8,8 +8,9 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                
-             <a href="{{url('yourorder')}}">
+             @foreach($d1 as $x)   
+             <a href="{{url('yourorder/'.$x->user_id)}}">
+              @endforeach
                 <p> Orders</p></a>
               </div>
               <div class="icon">
