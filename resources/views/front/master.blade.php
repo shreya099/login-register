@@ -96,11 +96,29 @@
 							<li><a href="javascript:void(0);" class="nav-opener visible-xs hidden"><i class="fa fa-bars"></i></a></li>
 						</ul>
 						<!-- widget cart wrap of the page -->
+						<?php
+                         $session=Session::getId();
+                         $r=DB::table('carts')->where('session_id',$session)->get();
+                         //print_r($r);
+
+                         if(Auth::check())
+                         {
+                         	$r1=DB::table('carts')->where('user_email',Auth::user()->email)->get();
+                         	//print_r($r1);
+                         }
+						?>
 						<ul class="list-unstyled widget-cart-wrap pull-right">
 							<li><a href="#popup1" class="lightbox"><i class="icon-user"></i></a></li>
 							<li><a href="javascript:void(0);" class="search-opener"><i class="icon-search"></i></a></li>
 							<li>
-								<a href="javascript:void(0);" class="cart-drop-opener"><i class="icon-cart"></i> <span class="num round fontjosefin text-center">4</span></a>
+								<a href="javascript:void(0);" class="cart-drop-opener"><i class="icon-cart"></i> <span class="num round fontjosefin text-center">
+									@if(Auth::check())
+                                        {{$r1->count()}}
+                                        @else
+                                        {{$r->count()}}
+									@endif
+                                       
+								</span></a>
 								<!-- Cart Dropdown of the page -->
 								<div class="cart-dropdown right">
 									<!-- Cart Menu of the page -->

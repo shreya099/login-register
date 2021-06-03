@@ -82,12 +82,14 @@ background-repeat:no-repeat;
 <div class="row">
 <div class="col-md-9 col-lg-8 mx-auto">
 <h3 class="login-heading mb-4">Welcome back!</h3>
-<form action="{{url('submit-login')}}" method="POST" id="logForm">
+<form action="{{url('user-login')}}" method="POST" id="logForm">
+
 {{ csrf_field() }}
 
 @if(session('success'))
     <h1></h1><script>swal( '{{session('success')}}' ,'Try Again!','error' ).then(function() { window. location = '{{url("/")}}'; });;</script>
 @endif
+<input type="hidden" name="role" value="0">
 <div class="form-label-group">
 <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" >
 <label for="inputEmail">Email address</label>

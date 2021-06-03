@@ -14,6 +14,8 @@ use Session;
 use Auth;
 use App\Dishorder;
 use App\Dishitem;
+use App\User;
+use Mail;
 
 
 
@@ -170,7 +172,7 @@ class FrontController extends Controller
             $d->grand_total=$r->grand_total;
             $d->save();
             $order_id=DB::getPdo()->lastInsertId();
-            print_r($order_id);
+            //print_r($order_id);
            $dish_item=cart::where('user_email',$d->user_email)->get();
            foreach ($dish_item as $dish_i) {
              # code...
@@ -188,6 +190,22 @@ class FrontController extends Controller
            }
            if($d['payment_method']=='cod')
            {
+            
+            $user = User::where('email',$r->email)->first(); 
+            // print_r($r->email);
+            // die;
+            $to = $r->email;
+            $id=$d->id;
+             $corder = Dishorder::all();
+            $corderd = Dishitem::all();
+             
+            $subject = 'User Order Successful';
+            $message = "Your Order Is Successful In PnInfosys Course Program \n\n"; 
+           
+            
+            Mail::send('front.order_email', ['msg' => $message,'corder' => $corder,'corderd' => $corderd,'id' => $id, 'user' => $user] , function($message) use ($to){ 
+                $message->to($to, 'User')->subject('User Order');  
+            });
             return redirect('thanks');
            }
 

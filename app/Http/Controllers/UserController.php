@@ -49,10 +49,20 @@ class UserController extends Controller
     	// print_r($r->all());
 
     	$d=$r->all();
-    	if(Auth::attempt(['email'=>$d['email'],'password'=>$d['pass']]))
-    	{   cart::where('session_id',$session_id)->update(['user_email'=>$d['email']]);
-            
+        $role_type=User::where('email',$d['email'])->first();
+        
+    	if(Auth::attempt(['email'=>$d['email'],'password'=>$d['password'],'role'=>$d['role']]))
+    	{   
+            if($role_type->role==1)
+            {
+            cart::where('session_id',$session_id)->update(['user_email'=>$d['email']]);
     		return redirect('cart');
+            }
+            elseif($role_type->role==0)
+            {
+                return redirect('admin/dashboard');
+            }
+
     	}
     	else
     	{
