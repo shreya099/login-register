@@ -120,49 +120,74 @@
                                        
 								</span></a>
 								<!-- Cart Dropdown of the page -->
-								<div class="cart-dropdown right">
-									<!-- Cart Menu of the page -->
-									<ul class="list-unstyled cart-menu">
-										<li>
-											<div class="img-holder bdr pull-left">
-												<a href="shopping-cart.html"><img src="https://via.placeholder.com/25x90" alt="image description" class="img-responsive"></a>
-											</div>
-											<div class="align-left pull-left">
-												<h3 class="heading3"><a href="shopping-cart.html">Strawberry</a></h3>
-												<span class="price clr">1 x $146.00</span>
-												<a href="javascript:void(0);" class="close"><i class="fa fa-times"></i></a>
-											</div>
-										</li>
-										<li>
-											<div class="img-holder bdr pull-left">
-												<a href="shopping-cart.html"><img src="https://via.placeholder.com/25x90" alt="image description" class="img-responsive"></a>
-											</div>
-											<div class="align-left pull-left">
-												<h3 class="heading3"><a href="shopping-cart.html">Strawberry</a></h3>
-												<span class="price clr">1 x $146.00</span>
-												<a href="javascript:void(0);" class="close"><i class="fa fa-times"></i></a>
-											</div>
-										</li>
-										<li>
-											<div class="img-holder bdr pull-left">
-												<a href="shopping-cart.html"><img src="https://via.placeholder.com/25x90" alt="image description" class="img-responsive"></a>
-											</div>
-											<div class="align-left pull-left">
-												<h3 class="heading3"><a href="shopping-cart.html">Strawberry</a></h3>
-												<span class="price clr">1 x $146.00</span>
-												<a href="javascript:void(0);" class="close"><i class="fa fa-times"></i></a>
-											</div>
-										</li>
-										<li class="total-price text-uppercase">
-											total:
-											<em class="price clr fwBold pull-right">$168.00</em>
-										</li>
-										<li>
-											<a href="shopping-cart.html" class="btn-primary active text-center text-uppercase lg-round">View Card</a>
-											<a href="checkout.html" class="btn-primary lg-round text-center text-uppercase">Check Out</a>
-										</li>
-									</ul>
-								</div>
+								
+							<div class="cart-dropdown right">
+								<!-- Cart Menu of the page -->
+								<ul class="list-unstyled cart-menu">
+									@if(Auth::check())
+
+									    @if($r1->count()>0)
+                                           <?php $total = 0; ?>
+									      @foreach($r1 as $cart_data)
+									<li>
+										<div class="img-holder bdr pull-left">
+											<a href="shopping-cart.html"><img src="https://via.placeholder.com/25x90" alt="image description" class="img-responsive"></a>
+										</div>
+										<div class="align-left pull-left">
+											<h3 class="heading3"><a href="shopping-cart.html">{{$cart_data->dish_name}}</a></h3>
+											<span class="price clr">{{$cart_data->dish_quantity}} x {{$cart_data->dish_price}}</span>
+											<a href="javascript:void(0);" class="close"><i class="fa fa-times"></i></a>
+										</div>
+									</li>
+
+										<?php $total = $total + ($cart_data->dish_quantity*$cart_data->dish_price) ?>
+									      @endforeach
+									      <li class="total-price text-uppercase">
+										total:
+									 
+										<em class="price clr fwBold pull-right">Rs.<?php echo $total; ?></em>
+									</li>
+									      
+									<li>
+										<a href="shopping-cart.html" class="btn-primary active text-center text-uppercase lg-round">View Card</a>
+										<a href="checkout.html" class="btn-primary lg-round text-center text-uppercase">Check Out</a>
+									</li>
+									    @endif
+									
+									@else
+                                        @if($r->count()>0)
+                                           <?php $total = 0; ?>
+									      @foreach($r as $cart_data)
+									<li>
+										<div class="img-holder bdr pull-left">
+											<a href="shopping-cart.html"><img src="https://via.placeholder.com/25x90" alt="image description" class="img-responsive"></a>
+										</div>
+										<div class="align-left pull-left">
+											<h3 class="heading3"><a href="shopping-cart.html">{{$cart_data->dish_name}}</a></h3>
+											<span class="price clr">{{$cart_data->dish_quantity}} x {{$cart_data->dish_price}}</span>
+											<a href="javascript:void(0);" class="close"><i class="fa fa-times"></i></a>
+										</div>
+									</li>
+
+										<?php $total = $total + ($cart_data->dish_quantity*$cart_data->dish_price) ?>
+									      @endforeach
+									      <li class="total-price text-uppercase">
+										total:
+									
+										<em class="price clr fwBold pull-right">Rs.<?php echo $total; ?></em>
+									</li>
+									      
+									<li>
+										<a href="shopping-cart.html" class="btn-primary active text-center text-uppercase lg-round">View Card</a>
+										<a href="checkout.html" class="btn-primary lg-round text-center text-uppercase">Check Out</a>
+									</li>
+                                        @endif
+									    
+									
+                                   
+									@endif
+								</ul>
+							</div>
 							</li>
 						</ul>
 						<div class="logo">

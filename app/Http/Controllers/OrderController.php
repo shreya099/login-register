@@ -14,6 +14,7 @@ class OrderController extends Controller
         $i=1;
         return view('admin.allorder',compact('d','i'));
     }
+    
     public function submit(Request $r)
     {
          $d=new dishorder;
