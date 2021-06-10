@@ -55,6 +55,7 @@ class UserController extends Controller
     	{   
             if($role_type->role==1)
             {
+                Session::put('front_session',$d['email']);
             cart::where('session_id',$session_id)->update(['user_email'=>$d['email']]);
     		return redirect('cart');
             }

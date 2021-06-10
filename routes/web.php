@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
+//Route::group(['middleware' =>['auth']],function(){
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
-
+// Route::group(['middleware' =>['auth']],function(){
 
   Route::get('/', 'AuthController@index');
   Route::post('submit-login', 'AuthController@submitLogin'); 
@@ -72,8 +72,9 @@ Auth::routes();
       Route::get('submit-pay','OrderController@submit1');
 
 
-
+//});
   
+  Route::post('/paytm-callback', 'FrontController@paytmCallback');
    Route::get('front', 'FrontController@index');
    Route::get('dish/{id}', 'FrontController@showdish');
     Route::get('show_all', 'FrontController@showall');
@@ -90,11 +91,14 @@ Auth::routes();
              Route::get('cart/update_q/{id}/{dish_quantity}','FrontController@update_q');
               Route::post('placeorder','FrontController@placeorder');
               Route::get('thanks','FrontController@thanks');
-                 Route::get('my','FrontController@my');
-                   Route::get('yourorder/{id}','FrontController@yourorder');
+
+               
 
 
-
+Route::group(['middleware' =>['frontlogin']],function(){
+  Route::get('my','FrontController@my');
+                   Route::get('yourorder/{id}','FrontController@yourorder');  
+});
    
 
 Route::get('/clear', function() { 
