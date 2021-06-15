@@ -118,6 +118,30 @@ class FrontController extends Controller
      
         
     }
+    // public function search(Request $r)
+    // {
+    //     $d=Dish::where([
+    //         ['dish_name','!=',NULL],
+    //         [function ($query) use ($r){
+    //             if(($term=$r->term))
+    //             {
+    //                 $query->orWhere('dish_name','LIKE','%' .$term. '%')->get();
+    //             }
+    //             print_r($r);
+    //         }
+
+
+    //         ]
+
+
+
+    //     ])
+    //     ->orderBy("id","desc")
+    //     ->paginate(9);
+    //     // return view('front.master',compact('d'))
+    //     // ->with('i',(request()->input('page',1)-1) * 5);
+    // }
+
     public function cart()
 
     { 

@@ -65,10 +65,10 @@ background-repeat:no-repeat;
 </head>
 <body>
 <div class="container">
-@if (\Session::has('ok'))
+@if (\Session::has('o'))
     <div class="alert alert-success">
         <ul>
-            <li>{!! \Session::get('ok') !!}</li>
+            <li>{!! \Session::get('o') !!}</li>
         </ul>
     </div>
 @endif

@@ -17,9 +17,8 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 //Route::group(['middleware' =>['auth']],function(){
-Auth::routes();
+// Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
 // Route::group(['middleware' =>['auth']],function(){
 
   Route::get('/', 'AuthController@index');
@@ -82,15 +81,21 @@ Auth::routes();
       Route::get('cart', 'FrontController@cart');
       Route::post('add_to','FrontController@addtocart');
       Route::get('register1','FrontController@register');
+ 
         Route::get('user_r','UserController@user');
-        Route::post('savereg','UserController@userinsert');
+        // Route::post('savereg','UserController@userinsert');
          Route::get('user_login','UserController@userlogin');
          Route::post('user-login','UserController@logininsert');
            Route::get('logout1','UserController@logout1');
+           Route::post('savereg','UserController@registerusers');
+           Route::match(['get', 'post'], '/confirm/{email}','UserController@confirmAccount');
+
+
             Route::get('checkout','FrontController@checkout');
              Route::get('cart/update_q/{id}/{dish_quantity}','FrontController@update_q');
               Route::post('placeorder','FrontController@placeorder');
               Route::get('thanks','FrontController@thanks');
+              // Route::get('front.search','FrontController@search');
 
                
 
@@ -99,7 +104,15 @@ Route::group(['middleware' =>['frontlogin']],function(){
   Route::get('my','FrontController@my');
                    Route::get('yourorder/{id}','FrontController@yourorder');  
 });
-   
+Route::get('front/dashboard', 'ForgotPasswordController@index');
+Route::get('/forget-password', 'ForgotPasswordController@getEmail');
+Route::post('/forget-password', 'ForgotPasswordController@postEmail');
+Route::get('{token}/reset-password', 'ResetPasswordController@getPassword');
+Route::post('/reset-password', 'ResetPasswordController@updatePassword');
+
+// Route::get('auth/google', 'UserController@redirectToGoogle');
+// Route::get('oauth/callback/google', 'UserController@handleGoogleCallback'); 
+
 
 Route::get('/clear', function() { 
         Artisan::call('cache:clear');

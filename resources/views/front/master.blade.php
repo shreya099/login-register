@@ -109,6 +109,7 @@
 						?>
 						<ul class="list-unstyled widget-cart-wrap pull-right">
 							<li><a href="#popup1" class="lightbox"><i class="icon-user"></i></a></li>
+							
 							<li><a href="javascript:void(0);" class="search-opener"><i class="icon-search"></i></a></li>
 							<li>
 								<a href="javascript:void(0);" class="cart-drop-opener"><i class="icon-cart"></i> <span class="num round fontjosefin text-center">
