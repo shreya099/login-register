@@ -88,7 +88,7 @@ use Illuminate\Support\Facades\Route;
          Route::post('user-login','UserController@logininsert');
            Route::get('logout1','UserController@logout1');
            Route::post('savereg','UserController@registerusers');
-           Route::match(['get', 'post'], '/confirm/{email}','UserController@confirmAccount');
+           Route::match(['get', 'post'], '/confirm/{code}','UserController@confirmAccount');
 
 
             Route::get('checkout','FrontController@checkout');
@@ -110,8 +110,11 @@ Route::post('/forget-password', 'ForgotPasswordController@postEmail');
 Route::get('{token}/reset-password', 'ResetPasswordController@getPassword');
 Route::post('/reset-password', 'ResetPasswordController@updatePassword');
 
-// Route::get('auth/google', 'UserController@redirectToGoogle');
-// Route::get('oauth/callback/google', 'UserController@handleGoogleCallback'); 
+ Route::get('auth/google', 'UserController@redirectToGoogle');
+ Route::get('oauth/callback/google', 'UserController@handleGoogleCallback'); 
+   Route::get('auth/github', 'UserController@redirectToGithub');
+ Route::get('oauth/callback/github', 'UserController@handleGithubCallback'); 
+
 
 
 Route::get('/clear', function() { 

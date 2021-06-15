@@ -12,6 +12,8 @@ use Socialite;
 use app\users_verify;
 use Exception;
 use Mail;
+use Hash;
+use Redirect;
 
 
 
@@ -42,22 +44,7 @@ class UserController extends Controller
 				$user->email = $d['email'];
 				$user->password = bcrypt($d['pass']);
                $user->save();
-        //         $token = Str::random(64);
-  
-        // users_verify::create([
-        //       'user_id' => $d->id, 
-        //       'token' => $token
-
-        //     ]);
-        //  echo($d->id);
-  
-        // Mail::send('email.emailVerificationEmail', ['token' => $token], function($message) use($request){
-        //       $message->to($request->email);
-        //       $message->subject('Email Verification Mail');
-        //   });
-         
         
-    
 
                return redirect('user_login');
 
@@ -116,51 +103,81 @@ class UserController extends Controller
         return redirect('front');
     }
    
-    // public function __construct() {
-    //     $this->middleware('guest')->except('logout');
-    // }
 
-    // public function redirectToGoogle() {
-    //     return Socialite::driver('google')->stateless()->redirect();
-    // }
-    // public function handleGoogleCallback() {
-    //     try {
-    //         $user = Socialite::driver('google')->stateless()->user();
-    //         $finduser = User::where('google_id', $user->id)->first();
-    //         if ($finduser) {
-    //             Auth::login($finduser);
-    //             return redirect('/home');
-    //         } else {
-    //             $newUser = User::create(['name' => $user->name, 'email' => $user->email, 'google_id' => $user->id]);
-    //             Auth::login($newUser);
-    //             return redirect()->back();
-    //         }
-    //     }
-    //     catch(Exception $e) {
-    //         return redirect('auth/google');
-    //     }
-    // }
-    //  public function verifyAccount($token)
-    // {
-    //     $verifyUser = users_verify::where('token', $token)->first();
-  
-    //     $message = 'Sorry your email cannot be identified.';
-  
-    //     if(!is_null($verifyUser) ){
-    //         $user = $verifyUser->user;
-              
-    //         if(!$user->is_email_verified) {
-    //             $verifyUser->user->is_email_verified = 1;
-    //             $verifyUser->user->save();
-    //             $message = "Your e-mail is verified. You can now login.";
-    //         } else {
-    //             $message = "Your e-mail is already verified. You can now login.";
-    //         }
-    //     }
-  
-    //   return redirect()->route('user_login')->with('message', $message);
-    // }
 
+    public function redirectToGoogle() {
+        return Socialite::driver('google')->stateless()->redirect();
+    }
+     public function redirectToGithub() {
+        return Socialite::driver('github')->redirect();
+    }
+    public function handleGoogleCallback() {
+        
+            
+    
+          try
+        {
+            $user = Socialite::driver('google')->stateless()
+                ->user();
+            $userData = User::where('email', $user->email)
+                ->first();
+            if ($userData)
+            {
+               
+                $userData->google_id = $user->id;
+                $userData->save();
+                Auth::login($userData);
+                Session::put('frontSession', $userData->email);
+                return Redirect::to('front')
+                    ->with(['userData' => $userData]);
+ 
+            }
+            else
+            {
+ 
+                $userData = User::create(['name' => $user->name, 'email' => $user->email,
+                'google_id' => $user->id,
+                'password' => encrypt('user@123') ]);
+                //Password is optional you can Send NULL value.
+                Auth::login($userData);
+                Session::put('frontSession', $userData->email);
+                return Redirect::to('front')
+                    ->with(['userData' => $userData]);
+            }
+ 
+        }
+        catch(Exception $exception)
+        {
+ 
+            dd($exception->getMessage());
+        }
+    
+    
+        
+       
+         
+    }
+     public function handleGithubCallback() {
+        
+            $user = Socialite::driver('github')->user();
+           
+            
+        $user=User::firstorCreate([
+
+        'email'=>$user->email ],
+        ['name'=>$user->name,
+        'password'=>Hash::make(Str::random(24))
+        ]
+
+
+
+
+        );
+        Auth::login($user,true);
+        return redirect('front');
+         
+    }
+   
     public function registerusers(Request $r)
         {    $data=$r->all();
               $user = new User;

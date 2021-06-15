@@ -9,4 +9,6 @@
 	<a href="{{url('/forget-password')}}">forget</a>
 	<a class="btn btn-lg btn-primary btn-block" href="{{ url('auth/google') }}">
  <strong>Login With Google</strong>
+ <a class="btn btn-lg btn-primary btn-block" href="{{ url('auth/github') }}">
+ <strong>Login With Github</strong>
 </form>

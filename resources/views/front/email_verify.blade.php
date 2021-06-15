@@ -10,7 +10,7 @@
 <td>Name:{{$email}}</td>
 </tr>
     <tr>
-  <td><a href="{{url('confirm/'.$email)}}">Activate Account</a></td>
+  <td><a href="{{url('confirm/'.$code)}}">Activate Account</a></td>
             </tr>
 <tr>
 <td>Thanks</td>
