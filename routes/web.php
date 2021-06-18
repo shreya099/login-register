@@ -114,7 +114,7 @@ Route::post('/reset-password', 'ResetPasswordController@updatePassword');
  Route::get('oauth/callback/google', 'UserController@handleGoogleCallback'); 
    Route::get('auth/github', 'UserController@redirectToGithub');
  Route::get('oauth/callback/github', 'UserController@handleGithubCallback'); 
-
+Route::get('/search','FrontController@search_item');
 
 
 Route::get('/clear', function() { 

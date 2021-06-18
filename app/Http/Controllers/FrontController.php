@@ -320,6 +320,18 @@ class FrontController extends Controller
              $d2=Dishorder::where('user_email',$useremail)->where('user_id',$id)->get();
             return view('front.yourorder',compact('d1','d2'));
            }
+
+public function search_item(Request $a)
+  {
+    // print_r($a->all());
+     $master = category::all();
+    $dish = dish::where('dish_name', 'like' , '%' . $a->input('quary') .'%')->get(); 
+    return view('front.search',compact('dish','master'));
+    
+  }
+
+
+
 //
            public function getAllEncdecFunc(){
 

@@ -110,7 +110,17 @@
 						<ul class="list-unstyled widget-cart-wrap pull-right">
 							<li><a href="#popup1" class="lightbox"><i class="icon-user"></i></a></li>
 							
-							<li><a href="javascript:void(0);" class="search-opener"><i class="icon-search"></i></a></li>
+							<li>
+         	<form action="{{url('/search')}}" method="get"
+         	class="login-form text-center">
+         	<div class="form-group">
+	   	 <input type="text" name="quary" placeholder="search" required>
+	   	 <button type="submit" class="icon-search" style="color: white;">
+	   	</button>
+
+	   	</div>
+	   	</form>
+	   </li>
 							<li>
 								<a href="javascript:void(0);" class="cart-drop-opener"><i class="icon-cart"></i> <span class="num round fontjosefin text-center">
 									@if(Auth::check())
