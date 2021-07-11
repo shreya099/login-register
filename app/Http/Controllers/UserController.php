@@ -69,7 +69,7 @@ class UserController extends Controller
     }
     public function logininsert(Request $r)
     {
-    	# code...
+    	#code...
     	//print_r($r->all());
     	 $session_id=Session::getId();
     	// print_r($r->all());

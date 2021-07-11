@@ -15,6 +15,7 @@ use Auth;
 use App\Dishorder;
 use App\Dishitem;
 use App\User;
+use App\Coupon;
 use Mail;
 use Illuminate\Support\Str;
 
@@ -166,7 +167,8 @@ class FrontController extends Controller
        
            }
      $d2=category::all();
-        return view('front.cart',compact('d1','d2'));
+     $d3=coupon::all();
+        return view('front.cart',compact('d1','d2','d3'));
 }
     public function checkout()
     {

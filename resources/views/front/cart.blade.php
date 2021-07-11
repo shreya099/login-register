@@ -94,14 +94,23 @@
 						</form>
 					</div>
 					<!-- Cart Widget of the page -->
-					<div class="col-xs-12 col-sm-4 cart-widget text-center">
+					<div class="col-xs-12 col-sm-4 cart-widget text-center form-group">
 						<h3 class="heading3 text-uppercase">DIscount codes</h3>
 						<p>Enter your coupin if you have one</p>
+						<select>
+							@foreach($d3 as $z)
+							@if($z->coupon_status=='inactive')
+							@continue
+							@endif
+
+							<option value='{{$z->coupon_value}}'>{{$z->coupon_code}} <br> for order upto rs {{$z->cart_min_value}}</option>
+							@endforeach
+						</select>
 						<!-- Subscribe Form of the page -->
 						<form class="subscribe-form">
 							<fieldset>
-								<input class="form-control" type="email">
-								<button type="submit" class="btn-primary text-uppercase lg-round">Subscribe</button>
+								
+								<button type="submit" class="btn-primary text-uppercase lg-round">Apply</button>
 							</fieldset>
 						</form>
 					</div>
